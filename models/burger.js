@@ -1,4 +1,4 @@
-var orm = require("./config/orm.js");
+var orm = require("../config/orm.js");
 
 var express = require("express");
 
@@ -11,15 +11,24 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
+var burgers = {
+	all: function(callback) {
+		orm.all("burgers", function(res) {
+			callback(res);
+		});
+	},
+	create: function(burgerName, devoured, callback) {
+	    orm.insertOne("burgers", burgerName, devoured, function(res) {
+	    	callback(res);
+	    });
+  	}, 
+	update: function(status, id, callback) {
+		orm.updateOne("burgers", status, id, function(res) {
+			callback(res);
+		});
+	}
+}
 
 
 
-
-orm.selectAll(function(result) {
-	var allData = result;
-  	console.log(data);
-});
-
-orm.insertOne();
-
-orm.updateOne();
+module.exports = burgers;
