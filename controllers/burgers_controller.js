@@ -1,11 +1,31 @@
 var express = require("express"); 
 // var connection = require("./burger.js");
+
 var path = require("path");
 var burger = require("../models/burger.js");
 
 module.exports = function (app) {
-	app.get("/index", function (req, res) {
-		res.send("hello");
+	app.get("/", function(req,res){
+		res.redirect("/burgers"); 
+	})
+
+	app.get("/burgers", function(req,res){
+		burger.all(function(data) {
+			var myResult = {
+				burgers: data
+			}
+			console.log(myResult); 
+
+			res.render("index", myResult); 
+		})
+	})
+
+	app.post("/burgers/create", function(req, res) {
+		burger.create(req.body.myNewBurger, false, function(data){
+			res.redirect("/burgers");
+			console.log("i'm in burger create");
+		})
 	});
+	
 
 }

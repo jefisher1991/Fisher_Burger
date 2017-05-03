@@ -26,4 +26,9 @@ var orm = {
   	}
   };
 
+
+// orm.insertOne("burgers", "burger_name", "tenzin burger", function(data) {
+// 	console.log(data);
+// })
+
 module.exports = orm;
