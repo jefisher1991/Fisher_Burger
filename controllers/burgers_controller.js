@@ -30,8 +30,10 @@ module.exports = function (app) {
 	});
 	
  	app.post("/burgers/update", function (req, res){
- 		burger.update()
+ 		burger.update(eatButton?, true, function(data){
+ 			on.click()
+ 		})
  		res.redirect("/burgers"); 
  	})
-
+// action="/?_method=PUT"
 }

@@ -8,7 +8,9 @@
                             <li class="list-group-item">
                                 {{this.burger_name}}
                                 <button type="button">
-                                <i class="fa fa-cutlery move-burger"  aria-hidden="true"></i></button>
+                                <i class="fa fa-cutlery move-burger" name="eatButton"  aria-hidden="true"></i></button>   
+
+                                {{!-- // action="/?_method=PUT" --}}
                             </li>
                         {{/unless}}
                     {{/each}}
