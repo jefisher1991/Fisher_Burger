@@ -3,6 +3,8 @@ var express = require("express");
 
 var path = require("path");
 var burger = require("../models/burger.js");
+var methodOverride = require("method-override");
+
 
 module.exports = function (app) {
 	app.get("/", function(req,res){
@@ -23,9 +25,13 @@ module.exports = function (app) {
 	app.post("/burgers/create", function(req, res) {
 		burger.create(req.body.myNewBurger, false, function(data){
 			res.redirect("/burgers");
-			console.log("i'm in burger create");
+			
 		})
 	});
 	
+ 	app.post("/burgers/update", function (req, res){
+ 		burger.update()
+ 		res.redirect("/burgers"); 
+ 	})
 
 }
